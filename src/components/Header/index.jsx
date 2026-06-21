@@ -17,9 +17,9 @@ const Header = () => {
         </Link>
       </div>
       <nav aria-label="Primary" className="nav-menu">
-        <Link to="/" className="nav-link">
-          Home
-        </Link>
+        <button type="button" className="try-btn" onClick={onLogOut}>
+          Try for free
+        </button>
         <button type="button" className="logout-btn" onClick={onLogOut}>
           Log out
         </button>
