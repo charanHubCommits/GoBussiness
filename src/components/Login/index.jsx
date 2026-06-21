@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import Cookies from "js-cookie"
 import "./index.css"
@@ -8,7 +8,14 @@ const Login = () => {
   const [password,setPassword] = useState("")
   const [errorMsg,setErrorMsg] = useState("")
   const [showError,setShowError] = useState(false) 
-  const navigateHome = useNavigate()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const token = Cookies.get("jwt-token")
+    if (token) {
+      navigate("/")
+    }
+  }, [navigate])
 
   const signIn = async(event)=>{
     event.preventDefault()
@@ -22,16 +29,18 @@ const Login = () => {
       body:JSON.stringify({ email, password })
     }
     const response = await fetch(url,options)
-    const data = await response.json()
+    const responseJson = await response.json()
 
+    const {data} = responseJson;
     const {token,message} = data
+    console.log(data)
     if(!token){
       setErrorMsg(message)
       setShowError(true)
-      console.log(errorMsg)
+      console.log(message)
     }else {
       Cookies.set("jwt-token",token,{expires: 7});
-      navigateHome("/")
+      navigate("/")
     }
   }
 
@@ -43,16 +52,12 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
-  const LoadPage = ()=> {
-    const token = Cookies.get("jwt-token")
-    if(token) return <h1>Go to home page</h1>
-
-    return (  
+  return (  
       <div className="login-page">
-        <div className="form-container" onSubmit={signIn}>
+        <div className="form-container">
         <h1 className="company-name">Go Bussiness</h1>
         <p className="tag-line">Sign in to open your referral dashboard.</p>
-        <form className="login-form">
+        <form className="login-form" onSubmit={signIn}>
           <label htmlFor="email">Email: </label>
           <input type="email" id="email" value={email} onChange={onChangeEmail}/>
           <label htmlFor="password">Password: </label>
@@ -63,9 +68,6 @@ const Login = () => {
         </div>
       </div>
     )
-  }
-
-  return LoadPage()
 }
 
 export default Login

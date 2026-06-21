@@ -36,23 +36,20 @@
   padding: 40px 30px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
-  border: 1px solid rgba(217, 119, 6, 0.15); /* Soft gold boundary border */
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(217, 119, 6, 0.15); 
 }
 
 .company-name {
-  color: var(--stylish-blue);
+  color: #5C32E6;
   font-size: 2.2rem;
   font-weight: 700;
-  text-align: center;
   margin-bottom: 8px;
   letter-spacing: -0.5px;
 }
 
 .tag-line {
-  color: var(--text-muted);
+  color: grey;
   font-size: 0.95rem;
-  text-align: center;
   margin-bottom: 32px;
   line-height: 1.4;
 }
@@ -63,7 +60,7 @@
 }
 
 .login-form label {
-  color: var(--gold-accent);
+  color: grey;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -92,7 +89,7 @@
 .login-form button[type="submit"] {
   width: 100%;
   padding: 14px;
-  background-color: var(--warm-blue);
+  background-color: #5C32E6;
   color: var(--bg-white);
   border: none;
   border-radius: 8px;
