@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const token = Cookies.get("jwt-token")
+    const token = Cookies.get("jwt_token")
     if (token) {
       navigate("/")
     }
@@ -28,19 +28,27 @@ const Login = () => {
       },
       body:JSON.stringify({ email, password })
     }
-    const response = await fetch(url,options)
-    const responseJson = await response.json()
+    try {
+      const response = await fetch(url,options)
+      const responseJson = await response.json()
+      console.log(responseJson)
 
-    const {data} = responseJson;
-    const {token,message} = data
-    console.log(data)
-    if(!token){
-      setErrorMsg(message)
-      setShowError(true)
-      console.log(message)
-    }else {
-      Cookies.set("jwt-token",token,{expires: 7});
-      navigate("/")
+      if(!response.ok){
+        const {message} = responseJson
+        setShowError(true)
+        setErrorMsg(message)
+        console.log(message)
+      }else {
+        const {data} = responseJson;
+        const {token,message} = data
+
+        Cookies.set("jwt_token",token,{expires: 7});
+        navigate("/")
+      }
+    } catch (error) {
+        console.log(error.message)
+        setErrorMsg("Unknown Error")
+        setShowError(true)
     }
   }
 
