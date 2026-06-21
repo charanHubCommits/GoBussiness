@@ -1,8 +1,10 @@
 import {useState,useEffect} from 'react'
 import Cookies from 'js-cookie'
+import Header from "../Header/"
 import MetricItem from "../MetricItem"
 import ReferralItem from "../ReferralItem"
 import ReferralShareItem from "../ReferralShareItem"
+import {TailSpin} from "react-loader-spinner"
 import "./index.css"
 
 const pageStates = {
@@ -22,7 +24,7 @@ const Home = ()=>{
   const getReferrals = async()=> {
     try {
       const url = "https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals"
-      const token = Cookies.get("jwt-token")
+      const token = Cookies.get("jwt_token")
       const Authorization = "Bearer "+token
       const options = {
         method:"GET",
@@ -49,6 +51,11 @@ const Home = ()=>{
     getReferrals()
   },[])
 
+  const renderLoadingPage = ()=>(
+    <div className="loader-container">
+      <TailSpin height="80" width="80" color="#6366f1" visible={true} />
+    </div>
+  )
 
   const renderSuccessPage = ()=> {
     const {metrics,referral,serviceSummary} = pageData
@@ -57,6 +64,7 @@ const Home = ()=>{
 
     return (
       <div className="home">
+      <Header />
       <h1>Referral Dashboard</h1>
       <p>Track your referrals, earnings, and partner activity in one place.</p>
       <div className="overview-section" role="region" aria-label="Overview metrics">
@@ -128,8 +136,12 @@ const Home = ()=>{
     )
   }
 
-  if(pageState===pageStates.success)return renderSuccessPage()
-  else return <h1>Home</h1>
+  switch(pageState) {
+    case pageStates.loading: return renderLoadingPage()
+    case pageStates.success: return renderSuccessPage()
+    default: return renderLoadingPage()
+  }
+
 }
 
 export default Home
