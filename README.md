@@ -80,3 +80,7 @@ Compile and bundle the project files for production:
 npm run build
 ```
 The static assets will be generated in the dist directory.
+
+### Vercel Deployment Note
+For Single Page Applications (SPA) deploying to Vercel, manual entries of sub-paths or page reloads will result in a 404 error if Vercel attempts to load those paths directly as folders. A vercel.json file is included in the project root to rewrite all requests back to index.html, allowing React Router to manage the routing logic.
+
