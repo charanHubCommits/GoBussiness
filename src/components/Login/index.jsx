@@ -63,19 +63,33 @@ const Login = () => {
   return (  
       <div className="login-page">
         <div className="form-container">
-        <h1 className="company-name">Go Bussiness</h1>
-        <p className="tag-line">Sign in to open your referral dashboard.</p>
-        <form className="login-form" onSubmit={signIn}>
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" value={email} onChange={onChangeEmail}/>
-          <label htmlFor="password">Password: </label>
-          <input type="password" id="password" value={password} onChange={onChangePassword}/>
-          {showError&&<p className="error-msg">{errorMsg}</p>}
-          <button type="submit">Sign in</button>
-        </form>
+          <h1 className="company-name">Go Business</h1>
+          <p className="tag-line">Sign in to open your referral dashboard.</p>
+          <form className="login-form" onSubmit={signIn}>
+            <label htmlFor="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              value={email} 
+              onChange={onChangeEmail} 
+              placeholder="you@example.com"
+            />
+            
+            <label htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              value={password} 
+              onChange={onChangePassword}
+            />
+            
+            {showError && <p className="error-msg">{errorMsg}</p>}
+            <button type="submit">Sign in</button>
+          </form>
         </div>
       </div>
     )
 }
 
 export default Login
+
