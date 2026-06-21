@@ -15,17 +15,19 @@ const ReferralShareItem = ({ label, value }) => {
   };
 
   return (
-    <div>
+    <div className="share-field-container">
       <p>{label}</p>
       <div className="input-group">
         <input type="text" readOnly value={value} />
         <button type="button" onClick={handleCopy}>
-          {isCopied ? "Copied!" : "Copy"}
+          Copy
         </button>
       </div>
+      {isCopied && <span className="copied-toast">Copied to clipboard!</span>}
     </div>
   );
 };
 
 export default ReferralShareItem
+
 
