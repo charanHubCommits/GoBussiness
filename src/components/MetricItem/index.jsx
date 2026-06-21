@@ -4,10 +4,11 @@ const MetricItem = props => {
 
   return (
     <li className="metric-item">
-      <p>{value}</p>
-      <p>{label}</p>
+      <p className="metric-value">{value}</p>
+      <p className="metric-label">{label}</p>
     </li>
   )
 }
 
 export default MetricItem
+
