@@ -1,0 +1,127 @@
+:root {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-accent: #6366f1;
+  --primary-hover: #4f46e5;
+  --border-color: #e2e8f0;
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.referral-details-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.details-container {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-accent);
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--primary-hover);
+  transform: translateX(-2px);
+}
+
+.details-main-heading {
+  font-size: 14px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.partner-name-heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.details-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.details-row:last-child {
+  border-bottom: none;
+}
+
+.details-row dt {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.details-row dd {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 15px;
+  margin-left: 0;
+}
+
+.details-row:last-child dd {
+  color: var(--primary-accent);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+/* Error Referral Details Container styling */
+.error-details-container {
+  border-color: #fca5a5;
+  background-color: #fef2f2;
+}
+
+.error-title {
+  font-size: 24px;
+  color: #dc2626;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .details-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 14px 16px;
+  }
+}
