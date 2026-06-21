@@ -7,7 +7,7 @@ const Login = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [errorMsg,setErrorMsg] = useState("")
-  
+  const [showError,setShowError] = useState(false) 
   const navigateHome = useNavigate()
 
   const signIn = async(event)=>{
@@ -27,6 +27,7 @@ const Login = () => {
     const {token,message} = data
     if(!token){
       setErrorMsg(message)
+      setShowError(true)
       console.log(errorMsg)
     }else {
       Cookies.set("jwt-token",token,{expires: 7});
@@ -56,6 +57,7 @@ const Login = () => {
           <input type="email" id="email" value={email} onChange={onChangeEmail}/>
           <label htmlFor="password">Password: </label>
           <input type="password" id="password" value={password} onChange={onChangePassword}/>
+          {showError&&<p className="error-msg">{errorMsg}</p>}
           <button type="submit">Sign in</button>
         </form>
         </div>

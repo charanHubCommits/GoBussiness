@@ -113,7 +113,7 @@
   transform: translateY(1px);
 }
 
-.error-message {
+.error-msg {
   color: #dc2626;
   background-color: #fef2f2;
   border: 1px solid #fca5a5;
@@ -149,10 +149,4 @@
   }
 }
 
-/*:width:width@media (min-width: 1024px) {
-  .form-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
-  }
-}
 
